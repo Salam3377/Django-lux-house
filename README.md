@@ -7,4 +7,4 @@
 
 # ERD 
 
-![Global API ERD](../ERD-wireframes/ERD_.png)
+![API ERD](/ERD_.png)
