@@ -9,7 +9,9 @@ from ..models.menu import Menu
 
 
 class MenuView(APIView):
+    authentication_classes = []
+    permission_classes = []
     def get(self, request):
-        menus = Menu.objects.all()
-        serializer = MenuSerializer(menus, many =True)
-        return Response({'authors': serializer.data})
+        menu = Menu.objects.all()
+        serializer = MenuSerializer(menu, many =True)
+        return Response({'menu': serializer.data})

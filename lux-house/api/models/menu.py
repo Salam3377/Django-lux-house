@@ -9,3 +9,13 @@ class Menu(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.price} {self.description}"
+    
+    def as_dict(self):
+        """Returns dictionary version of Menu models"""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'price': self.price,
+            'description': self.description
+        }
+
