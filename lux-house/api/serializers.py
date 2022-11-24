@@ -8,8 +8,16 @@ from .models.menu import Menu
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
-        field = '__all__'
+        fields = '__all__'
         model = Menu
+
+class MenuReadSerializer(serializers.ModelSerializer):
+    item = serializers.StringRelatedField()
+    class Meta:
+        fields = '__all__'
+        model = Menu
+
+
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mango
