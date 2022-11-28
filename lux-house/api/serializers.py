@@ -5,6 +5,8 @@ from rest_framework import serializers
 from .models.mango import Mango
 from .models.user import User
 from .models.menu import Menu
+from .models.product import Product
+from .models.cart import Cart
 
 class MenuSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,10 +20,41 @@ class MenuReadSerializer(serializers.ModelSerializer):
         model = Menu
 
 
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = '__all__'
+        model = Product
+
+class ProductReadSerializer(serializers.ModelSerializer):
+    item = serializers.StringRelatedField()
+    class Meta:
+        fields = '__all__'
+        model = Product
+
+
+class CartSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = "__all__"
+        model= Cart
+
+
+class CartReadSerializer(serializers.ModelSerializer):
+    item = serializers.StringRelatedField()
+    class Meta:
+        fields = "__all__"
+        model= Cart
+
+
+
+
+
+
+
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mango
-        fields = ('id', 'name', 'color', 'ripe', 'owner')
+        fields = ('id', 'name', 'color', 'owner')
 
 
 
@@ -61,3 +94,11 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
     old = serializers.CharField(required=True)
     new = serializers.CharField(required=True)
+
+
+
+
+
+
+
+
