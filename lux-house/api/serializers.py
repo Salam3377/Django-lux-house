@@ -8,12 +8,14 @@ from .models.menu import Menu
 from .models.product import Product
 from .models.cart import Cart
 
+
 class MenuSerializer(serializers.ModelSerializer):
+     # here to check
     class Meta:
         fields = '__all__'
         model = Menu
 
-class MenuReadSerializer(serializers.ModelSerializer):
+class MenuReadSerializer(serializers.ModelSerializer):   #menu
     item = serializers.StringRelatedField()
     class Meta:
         fields = '__all__'
@@ -32,23 +34,17 @@ class ProductReadSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = Product
 
-
-class CartSerializer(serializers.ModelSerializer):
+class CartSerializer(serializers.ModelSerializer):   #cart
     class Meta:
-        fields = "__all__"
-        model= Cart
+        fields = '__all__'
+        model = Cart
 
-
+    
 class CartReadSerializer(serializers.ModelSerializer):
     item = serializers.StringRelatedField()
     class Meta:
-        fields = "__all__"
-        model= Cart
-
-
-
-
-
+        fields = '__all__'
+        model = Cart
 
 
 class MangoSerializer(serializers.ModelSerializer):

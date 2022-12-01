@@ -1,10 +1,14 @@
 from django.db import models
+from .product import Product
 from .menu import Menu
+from django.conf import settings
+from django.contrib.postgres.fields import ArrayField
 
 class Cart(models.Model):
-    item = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='item_to_cart')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    product = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='products')
+
+
 
     def __str__(self):
-        return f'{self.item} , added'
+        return f'{self.product}'
+    

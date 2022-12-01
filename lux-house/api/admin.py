@@ -9,7 +9,6 @@ from .models.product import Product
 from .models.cart import Cart
 
 
-
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
     list_display = ['id', 'email', 'is_superuser', 'last_login']
@@ -47,7 +46,6 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Mango)
 admin.site.register(Menu)
-
+admin.site.register(Cart)
 
 admin.site.register(Product)
-admin.site.register(Cart)
