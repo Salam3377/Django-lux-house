@@ -35,6 +35,8 @@ class ProductReadSerializer(serializers.ModelSerializer):
         model = Product
 
 class CartSerializer(serializers.ModelSerializer):   #cart
+    #add the other serializer so we can read the other docs from many to many
+    item = MenuSerializer
     class Meta:
         fields = '__all__'
         model = Cart
