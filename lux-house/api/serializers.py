@@ -1,5 +1,5 @@
-from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 
 from .models.mango import Mango
@@ -25,7 +25,7 @@ class ProductReadSerializer(serializers.ModelSerializer):   #menu
 class CartSerializer(serializers.ModelSerializer):   #cart
     #add the other serializer so we can read the other docs from many to many
     class Meta:
-        fields = '__all__'
+        fields = ['product', 'owner']
         model = Cart
 
     
@@ -79,11 +79,3 @@ class ChangePasswordSerializer(serializers.Serializer):
     model = get_user_model()
     old = serializers.CharField(required=True)
     new = serializers.CharField(required=True)
-
-
-
-
-
-
-
-

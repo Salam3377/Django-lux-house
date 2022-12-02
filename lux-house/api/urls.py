@@ -18,6 +18,6 @@ urlpatterns = [
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product' ),
     
     path('cart/', CartView.as_view(), name='cart' ),
-    path('cart/<int:pk>/', CartDetailView.as_view(), name='cart' ),
+    path('cart/<int:pk>/', CartView.as_view(), name='cart' ),
 
 ]
