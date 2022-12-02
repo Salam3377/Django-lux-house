@@ -8,7 +8,7 @@ from ..serializers import CartSerializer, CartReadSerializer
 from ..models.cart import Cart
 from ..models.menu import Product
 from ..models.user import User
-
+from ..serializers import ProductSerializer
 
 
 class CartView(APIView):
@@ -19,16 +19,24 @@ class CartView(APIView):
         print('GET: ', request)
         cart = Cart.objects.all()
         serializer = CartSerializer(cart, many =True)
-        return Response({'cart': serializer.data})
+        res = []
+        print(serializer.data)
+        for object in serializer.data:
+            print(object['product'])
+            p = get_object_or_404(Product, pk=object['product'])
+            product_serializer = ProductSerializer(p)
+            res.append(product_serializer.data)
+        
+        return Response({'cart': res})
     def post(self,request, pk):
         print('POST: ', request.data, ' | ', pk)
         p = get_object_or_404(Product, pk=pk)
         u = get_object_or_404(User, pk=1)
-        serializer = CartSerializer(data={'product': pk})# left data name, takes request data in
+        serializer = CartSerializer(data={'product': p.id, 'owner': 1})# left data name, takes request data in
         if serializer.is_valid():
-            c = Cart.objects.create(Product=p, User=0)
-            c.save()
-            # serializer.save()
+            # c = Cart.objects.create(Product=p, User=0)
+            # c.save()
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
