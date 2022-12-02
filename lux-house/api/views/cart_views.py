@@ -6,6 +6,8 @@ from rest_framework import viewsets
 
 from ..serializers import CartSerializer, CartReadSerializer
 from ..models.cart import Cart
+from ..models.menu import Product
+from ..models.user import User
 
 
 
@@ -20,8 +22,12 @@ class CartView(APIView):
         return Response({'cart': serializer.data})
     def post(self,request, pk):
         print('POST: ', request.data, ' | ', pk)
-        serializer = CartSerializer(data=request.data)# left data name, takes request data in
+        p = get_object_or_404(Product, pk=pk)
+        u = get_object_or_404(User, pk=1)
+        serializer = CartSerializer(data={'product': pk})# left data name, takes request data in
         if serializer.is_valid():
+            c = Cart.objects.create(Product=p, User=0)
+            c.save()
             # serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
