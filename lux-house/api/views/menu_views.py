@@ -17,7 +17,7 @@ class ProductView(APIView):
         
     # def get_queryset(self):
     #     user = self.request.user
-    #     queryset = self.queryset.filter(owner=user)
+    #     queryset = se lf.queryset.filter(owner=user)
     #     return queryset
 
     # def perform_create(self, serializer):

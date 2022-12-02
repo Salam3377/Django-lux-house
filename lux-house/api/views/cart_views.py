@@ -14,15 +14,17 @@ class CartView(APIView):
     permission_classes = []
     
     def get(self, request):
+        print('GET: ', request)
         cart = Cart.objects.all()
         serializer = CartSerializer(cart, many =True)
         return Response({'cart': serializer.data})
-    # def post(self,request):
-    #     serializer = CartSerializer(data=request.data)# left data name, takes request data in
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self,request, pk):
+        print('POST: ', request.data, ' | ', pk)
+        serializer = CartSerializer(data=request.data)# left data name, takes request data in
+        if serializer.is_valid():
+            # serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
@@ -31,14 +33,16 @@ class CartView(APIView):
 class CartDetailView(APIView):
     authentication_classes = []
     permission_classes = []
-    """View class for menu/:pk for viewing sinlge menu, updating or removing single menu"""
-    # serializer_class = CartSerializer
-    # def get(self, request, pk):
-    #     cart = get_object_or_404(CartProducts, pk=pk) # first pk name second pk parameter
-    #     serializer = CartReadSerializer(cart)
-    #     return Response({'cart': serializer.data})
+    # """View class for menu/:pk for viewing sinlge menu, updating or removing single menu"""
+    serializer_class = CartSerializer
+    def get(self, request, pk):
+        print('CART DETAIL VIEW - GET: ', request , ' | ', pk)
+        # cart = get_object_or_404(CartProducts, pk=pk) # first pk name second pk parameter
+        # serializer = CartReadSerializer(cart)
+        # return Response({'cart': serializer.data})
 
-    # def patch(self, request, pk):  #update
+    def post(self, request, pk):  #update
+        print('CART DETAIL VIEW - POST: ', request , ' | ', pk)
     #     cart = get_object_or_404(CartProducts, pk=pk) # first pk name second pk parameter
     #     serializer = CartSerializer(cart, data=request.data)
     #     if serializer.is_valid():
