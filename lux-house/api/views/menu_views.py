@@ -3,17 +3,17 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets
-from ..serializers import MenuSerializer, MenuReadSerializer
-from ..models.menu import Menu
+from ..serializers import ProductSerializer, ProductReadSerializer
+from ..models.menu import Product
 
-class MenuView(APIView):
+class ProductView(APIView):
     authentication_classes = []
     permission_classes = []
   
     def get(self, request):
-        menu = Menu.objects.all()
-        serializer = MenuSerializer(menu, many =True)
-        return Response({'menu': serializer.data})
+        product = Product.objects.all()
+        serializer = ProductSerializer(product, many =True)
+        return Response({'product': serializer.data})
         
     # def get_queryset(self):
     #     user = self.request.user
@@ -39,26 +39,26 @@ class MenuView(APIView):
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class MenuDetailView(APIView):
+class ProductDetailView(APIView):
     authentication_classes = []
     permission_classes = []
     """View class for menu/:pk for viewing sinlge menu, updating or removing single menu"""
-    serializer_class = MenuSerializer
+    serializer_class = ProductSerializer
     def get(self, request, pk):
-        menu = get_object_or_404(Menu, pk=pk) # first pk name second pk parameter
-        serializer = MenuReadSerializer(menu)
-        return Response({'menus': serializer.data})
+        product = get_object_or_404(Product, pk=pk) # first pk name second pk parameter
+        serializer = ProductReadSerializer(product)
+        return Response({'product': serializer.data})
 
     def patch(self, request, pk):  #update
-        menu = get_object_or_404(Menu, pk=pk) # first pk name second pk parameter
-        serializer = MenuSerializer(menu, data=request.data)
+        product = get_object_or_404(Product, pk=pk) # first pk name second pk parameter
+        serializer = ProductSerializer(product, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        menu = get_object_or_404(Menu, pk=pk)
-        menu.delete()
+        product = get_object_or_404(Product, pk=pk)
+        product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         

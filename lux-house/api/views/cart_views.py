@@ -6,7 +6,7 @@ from rest_framework import viewsets
 
 from ..serializers import CartSerializer, CartReadSerializer
 from ..models.cart import Cart
-from ..models.menu import Menu
+
 
 
 class CartView(APIView):

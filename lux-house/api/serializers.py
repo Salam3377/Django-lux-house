@@ -4,39 +4,26 @@ from rest_framework import serializers
 
 from .models.mango import Mango
 from .models.user import User
-from .models.menu import Menu
-from .models.product import Product
+from .models.menu import Product
+
 from .models.cart import Cart
 
 
-class MenuSerializer(serializers.ModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
      # here to check
     class Meta:
         fields = '__all__'
-        model = Menu
-
-class MenuReadSerializer(serializers.ModelSerializer):   #menu
-    item = serializers.StringRelatedField()
-    class Meta:
-        fields = '__all__'
-        model = Menu
-
-
-
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = '__all__'
         model = Product
 
-class ProductReadSerializer(serializers.ModelSerializer):
+class ProductReadSerializer(serializers.ModelSerializer):   #menu
     item = serializers.StringRelatedField()
     class Meta:
         fields = '__all__'
         model = Product
+
 
 class CartSerializer(serializers.ModelSerializer):   #cart
     #add the other serializer so we can read the other docs from many to many
-    item = MenuSerializer
     class Meta:
         fields = '__all__'
         model = Cart

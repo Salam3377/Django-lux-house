@@ -3,9 +3,7 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .models.user import User
 from .models.mango import Mango
-from .models.menu import Menu
-
-from .models.product import Product
+from .models.menu import Product
 from .models.cart import Cart
 
 
@@ -45,7 +43,7 @@ class UserAdmin(BaseUserAdmin):
 # class to format the pages:
 admin.site.register(User, UserAdmin)
 admin.site.register(Mango)
-admin.site.register(Menu)
+admin.site.register(Product)
 admin.site.register(Cart)
 
-admin.site.register(Product)
+

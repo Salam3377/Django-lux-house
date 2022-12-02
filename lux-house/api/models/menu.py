@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 
 
-class Menu(models.Model):
+class Product(models.Model):
     name= models.CharField(max_length= 30)
     price= models.CharField(max_length = 15)
     description = models.CharField(max_length=255)
