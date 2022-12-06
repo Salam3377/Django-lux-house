@@ -178,3 +178,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Use the custom user model as the auth user for the admin view
 AUTH_USER_MODEL = 'api.User'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)

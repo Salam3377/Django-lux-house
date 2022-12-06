@@ -7,6 +7,7 @@ class Product(models.Model):
     price= models.CharField(max_length = 15)
     description = models.CharField(max_length=255)
     menu_type = models.CharField(max_length=20)
+    image = models.ImageField(null=True, blank=True, upload_to='images/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -21,5 +22,6 @@ class Product(models.Model):
             'price': self.price,
             'description': self.description,
             'menu_type': self.menu_type,
+            'image' : self.image,
         }
 
