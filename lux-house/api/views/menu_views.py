@@ -5,16 +5,16 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from ..serializers import ProductSerializer, ProductReadSerializer
 from ..models.menu import Product
-
+# we have a product views in the menu view file !?
 class ProductView(APIView):
     authentication_classes = []
     permission_classes = []
-  
+
     def get(self, request):
         product = Product.objects.all()
         serializer = ProductSerializer(product, many =True)
         return Response({'product': serializer.data})
-        
+
     # def get_queryset(self):
     #     user = self.request.user
     #     queryset = se lf.queryset.filter(owner=user)
@@ -30,7 +30,7 @@ class ProductView(APIView):
 #         menu = Menu.objects.all()
 #         serializer = MenuSerializer(menu, many =True)
 #         return Response({'menu': serializer.data})
-    
+
 #     def post(self,request):
 #         serializer = MenuSerializer(data=request.data)# left data name, takes request data in
 #         if serializer.is_valid():
@@ -61,4 +61,3 @@ class ProductDetailView(APIView):
         product = get_object_or_404(Product, pk=pk)
         product.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-        

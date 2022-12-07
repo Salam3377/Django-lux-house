@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
     # fieldset including the list of fields.
     # Below we're saying create 4 sections, the first section has no name specified
     fieldsets = (
-      (None, {'fields': ('email', 'password')}),
+      (None, {'fields': ('email', 'password')}),# inconsistent indentation - did 2 spaces instead of 4 here
       ('Permissions',
           {
               'fields': (
@@ -45,5 +45,3 @@ admin.site.register(User, UserAdmin)
 admin.site.register(Mango)
 admin.site.register(Product)
 admin.site.register(Cart)
-
-

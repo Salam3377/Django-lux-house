@@ -1,19 +1,21 @@
 # Django
+<!-- your app is Django ? no- its Lux house ! rename this banner above -->
+
 
 ## General info
-
+<!-- links to front end repo , acknowledge that i'm reading the backend docs here  -->
 For this project we used React as frontend(client side) and Django as backend(API).  
 
 
-
+<!-- user stories go in front end -->
 ## About
-
+<!-- spelling : restaurant  -->
    The Lux-House app is a website of a resataurant with its specialties of coffee and tea. 
    The goal is to create that app with great design and the necessary functionality. 
    Users will be able to sign up, log in and log out. When users are signed in, they could add items to cart, and leave the comment reviews.
 
 ## Team
-
+<!-- Sean is not the git manager, Salam is since he is the owner of the repo  -->
 - Sean Pham (Full Stack Developer, Git Manager)
 - Abdusalam Abdusalamov (Full Stack Developer, Git Manager)
 
@@ -64,3 +66,6 @@ For this project we used React as frontend(client side) and Django as backend(AP
 | POST   | `/items`      | `items#create`    |
 | PATCH  | `/items/:id`  | `item#update`     |
 | DELETE | `/items/:id`  | `items#delete`    |
+
+<!-- whats V2 look like ? whats the next step in development? -->
+<!-- consider a retrospective section here discussing what you've learned  -->

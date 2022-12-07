@@ -5,7 +5,7 @@ from .views.menu_views import ProductView, ProductDetailView
 from .views.cart_views import CartView, CartDetailView
 
 
-urlpatterns = [
+urlpatterns = [ # inconsistent white space, what mangos ?
   	# Restful routing
     path('mangos/', Mangos.as_view(), name='mangos'),
     path('mangos/<int:pk>/', MangoDetail.as_view(), name='mango_detail'),
@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('product/', ProductView.as_view(), name='product' ),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product' ),
-    
+
     path('cart/', CartView.as_view(), name='cart' ),
     path('cart/<int:pk>/', CartView.as_view(), name='cart' ),
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 
-
+# class is product but file is menu. why.
 class Product(models.Model):
     name= models.CharField(max_length= 30)
     price= models.CharField(max_length = 15)
@@ -13,7 +13,7 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.price} {self.description} {self.menu_type}"
-    
+
     def as_dict(self):
         """Returns dictionary version of Menu models"""
         return {
@@ -24,4 +24,3 @@ class Product(models.Model):
             'menu_type': self.menu_type,
             'image' : self.image,
         }
-

@@ -15,7 +15,7 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
         model = Product
 
-class ProductReadSerializer(serializers.ModelSerializer):   #menu
+class ProductReadSerializer(serializers.ModelSerializer):   #menu # you can't keep this straight if you say 1 thing and mean another 
     item = serializers.StringRelatedField()
     class Meta:
         fields = '__all__'
@@ -28,21 +28,21 @@ class CartSerializer(serializers.ModelSerializer):   #cart
         fields = ['product', 'owner']
         model = Cart
 
-    
+
 class CartReadSerializer(serializers.ModelSerializer):
     item = serializers.StringRelatedField()
     class Meta:
         fields = '__all__'
         model = Cart
 
-
+# what mangos
 class MangoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Mango
         fields = ('id', 'name', 'color', 'owner')
 
 
-
+# inconsistent white space
 class UserSerializer(serializers.ModelSerializer):
     # This model serializer will be used for User creation
     # The login serializer also inherits from this serializer
